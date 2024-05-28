@@ -1,0 +1,91 @@
+accelerator:
+  displayName: Sample LLM Argo Workflow with KappController
+  description: Integrates LLM Argo Workflow with GitOps using KappController
+  iconUrl: https://raw.githubusercontent.com/cncf/artwork/main/projects/argo/horizontal/color/argo-horizontal-color.svg
+  tags:
+  - "ML"
+  - "AI"
+  - "machinelearning"
+  - "datascience"
+  - "MLOps"
+  - "artificialintelligence"
+  - "python"
+  - "R"
+  - "argo"
+  - "pipeline"
+  - "kapp"
+  - "kappcontroller"
+  - "gitops"
+  - "carvel"
+  - "sample"
+  - "GenAI"
+  - "llm"
+  - "LLMOps"
+  options:
+    - name: manual
+      inputType: radio
+      display: true
+      choices:
+        - text: 'View guidance manual: https://green-korrie-24.tiiny.site'
+          value: doc
+      defaultValue: doc
+    - name: finalModelStageOnPass
+      inputType: select
+      choices:
+        - value: Production
+          text: Production
+        - value: Staging
+          text: Staging
+        - value: None
+          text: None
+      defaultValue: Staging
+      display: true
+      label: 'Final Model Stage on Pass: Provide final stage to transition successfully validated models after model evaluation'
+    - name: gitRepoUser
+      inputType: text
+      display: true
+      label: 'Git Repository User: Provide git user used by kapp-controller'
+    - name: gitRepoRepository
+      inputType: text
+      display: true
+      label: 'Git Repository Name: Provide http link to the source git repository of the workflow'
+    - name: trainingExperimentName
+      inputType: text
+      display: true
+      label: 'Name of Training Experiment: Provide the name of the MLflow training experiment'
+    - name: gitRepoBranch
+      inputType: text
+      display: true
+      label: 'Git Repository Branch: Provide the name of the git branch in the source git repository'
+    - name: pipelineAppcrName
+      inputType: text
+      display: true
+      label: 'Name of KappController Resource: Provide the name of the App object that will represent this flow'
+    - name: pipelineWorkflowName
+      inputType: text
+      display: true
+      label: 'Name of Argo Workflow: Provide the name of the Argo Workflow pipeline that will be generated'
+engine:
+  type: Merge
+  sources:
+    - type: Chain
+      transformations:
+        - type: Include
+          patterns: [ 'resources/**' ]
+        - type: ReplaceText
+          substitutions:
+            - text: FINAL_MODEL_STAGE_ON_PASS
+              with: "#finalModelStageOnPass"
+            - text: GIT_REPO_USER
+              with: "#gitRepoUser"
+            - text: GIT_REPO_REPOSITORY
+              with: "#gitRepoRepository"
+            - text: TRAINING_EXPERIMENT_NAME
+              with: "#trainingExperimentName"
+            - text: GIT_REPO_BRANCH
+              with: "#gitRepoBranch"
+            - text: MYPIPELINEAPP
+              with: "#pipelineAppcrName"
+            - text: MYPIPELINEWORKFLOW
+              with: "#pipelineWorkflowName"
+

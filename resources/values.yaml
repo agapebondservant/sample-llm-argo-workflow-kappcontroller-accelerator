@@ -1,0 +1,7 @@
+#@data/values
+---
+model_stage: FINAL_MODEL_STAGE_ON_PASS
+git_repo_user: GIT_REPO_USER
+git_repo_app: GIT_REPO_REPOSITORY
+experiment_name: TRAINING_EXPERIMENT_NAME
+environment_name: GIT_REPO_BRANCH
