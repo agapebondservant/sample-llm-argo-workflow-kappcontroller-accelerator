@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: mlplatform-accelerator
+  name: llm-argo-pipelines-kapp-acc
   annotations:
     github.com/project-slug: agapebondservant/sample-llm-argo-workflow-kappcontroller-accelerator
 spec:
