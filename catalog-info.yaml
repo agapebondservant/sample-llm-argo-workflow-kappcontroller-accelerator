@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: mlplatform-accelerator
+  annotations:
+    github.com/project-slug: agapebondservant/sample-llm-argo-workflow-kappcontroller-accelerator
+spec:
+  type: other
+  lifecycle: unknown
+  owner: tanzu-tech-marketing
